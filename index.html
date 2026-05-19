@@ -28,46 +28,51 @@ body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-ser
 .hero p{color:var(--muted);font-size:15px;line-height:1.65;font-weight:400;padding-bottom:6px}
 @media(max-width:600px){.hero{flex-direction:column;align-items:flex-start;gap:16px}}
 
-.config-row{display:grid;grid-template-columns:1fr 1fr 1fr;column-gap:0px;row-gap:0px;margin-bottom:0px;background:var(--border)}
+.stack{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.config-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border)}
+.config-row-top{grid-template-columns:1fr}
 @media(max-width:760px){.config-row{grid-template-columns:1fr}}
 
-.panel{background:var(--card);padding:24px;animation:fi .3s ease;border-style:solid;border-width:1px;border-color:rgba(200, 192, 181, 1);margin-top:-1px;margin-bottom:-1px;margin-left:-1px;margin-right:-1px}
+.panel{background:var(--card);padding:24px;animation:fi .3s ease}
 @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.plabel{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-style:none;border-width:0px;border-color:rgba(0, 0, 0, 0);border-image:none}
-.plabel::after{content:none}
+.panel-sq{display:flex;flex-direction:column}
+.sq-inner{flex:1;display:flex;flex-direction:column;justify-content:flex-start}
+.wf-row{display:flex;gap:24px;align-items:flex-end}
+.wf-field{flex:1;min-width:0}
+.wf-chips{margin-top:0;padding-bottom:11px;flex-shrink:0}
+@media(max-width:680px){.wf-row{flex-direction:column;align-items:stretch;gap:12px}.wf-chips{padding-bottom:0}}
+.plabel{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.plabel::after{content:'';flex:1;height:1px;background:var(--border)}
 .field label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:500}
 .field select{width:100%;background:var(--bg);border:1px solid var(--border-bright);color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;padding:10px 36px 10px 12px;outline:none;appearance:none;cursor:pointer;transition:border-color .2s,box-shadow .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23585654' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;border-radius:0}
 .field select:focus{border-color:var(--accent);box-shadow:0 0 0 2px var(--aglow)}
-.field select#userB{border-color:rgba(181, 173, 162, 1);background-color:rgba(226, 220, 212, 1)}
 .field select option{background:var(--bg);color:var(--text)}
 .field select optgroup{color:var(--muted);font-size:11px}
 .chips{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap;min-height:24px}
-.chip{background:var(--surface);border:1px solid var(--border);padding:3px 10px;font-size:11px;color:var(--muted);font-weight:500;border-radius:100px}
+.chip{background:var(--surface);border:1px solid var(--border);padding:3px 10px;font-size:11px;color:var(--muted);font-weight:500}
 .chip span{color:var(--text);font-weight:600}
+.dimg{width:100%;aspect-ratio:1/1;background:var(--surface);border:1px solid var(--border);margin-bottom:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.dimg img{width:100%;height:100%;object-fit:contain;transition:opacity .25s ease}
+.dimg.loading img{opacity:0}
+.dimg-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;pointer-events:none;text-align:center;padding:8px}
 
-.rpanel{background:var(--card);border:1px solid var(--border);border-left:1px solid var(--border);padding:28px;position:relative;transition:border-left-color .3s;margin-bottom:1px}
-.rpanel.on{border-left-color:rgba(200, 192, 181, 1)}
-.rempty{text-align:center;padding:32px 0;color:var(--dim);font-size:13px;font-weight:400}
-#rp{border-image:none;border-color:rgba(200, 192, 181, 1);border-left-width:1px;border-left-color:rgba(200, 192, 181, 1);margin-bottom:16px}
-#re{border-style:none;border-width:0px;border-color:rgba(0, 0, 0, 0);border-image:none}
-.rempty svg{display:block;margin:0 auto 16px;opacity:.25}
-.rgrid{display:none;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
-.rgrid.show{display:grid}
-@media(max-width:680px){.rgrid{grid-template-columns:1fr}}
+.rempty{text-align:center;color:var(--dim);font-size:12px;font-weight:400;line-height:1.5}
+.rempty svg{display:block;margin:0 auto 12px;opacity:.25}
+.sq-result{display:none}
+.sq-result.show{display:block}
 .mlabel{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:600}
-.srow{display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:10px}
-.sqname{font-size:24px;font-weight:700;letter-spacing:-.01em;transition:color .3s}
-.sqname#sqn{margin-right:8px}
-#sm{font-size:24px;font-weight:700}
-.sbar{height:6px;background:var(--border);overflow:hidden;margin-bottom:8px}
-.sfill{height:100%;transition:width .6s cubic-bezier(.34,1.56,.64,1),background .3s;width:0}
-.ssegs{display:flex;justify-content:space-between;font-size:9px;color:var(--dim);letter-spacing:.04em;font-weight:500}
-.lboxes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.lbox{background:rgba(226, 220, 212, 1);border:1px solid var(--border);padding:12px}
+.srow{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:16px}
+.sqname{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1;transition:color .3s}
+.sval{font-size:22px;font-weight:600;letter-spacing:-.01em;line-height:1}
+.sbar{display:flex;gap:2px;margin-bottom:20px}
+.sseg{flex:1;height:64px;background:#DAD1C7;border:1px solid #CBC0B4;transition:background .35s ease,border-color .35s ease}
+.ssegs{display:flex;justify-content:space-between;font-size:9px;color:var(--dim);letter-spacing:.04em;font-weight:500;margin-bottom:16px}
+.lboxes{display:grid;grid-template-columns:1fr;gap:8px}
+.lbox{background:var(--surface);border:1px solid var(--border);padding:12px}
 .lbox-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:600}
 .lbox-val{font-size:20px;font-weight:700;letter-spacing:-.01em}
 
-.ftable{background:var(--card);border:1px solid var(--border);overflow:hidden;margin-bottom:1px}
+.ftable{background:var(--card);overflow:hidden}
 .fth{padding:14px 20px;border-bottom:1px solid var(--border);background:var(--surface)}
 .ftitle{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 table{width:100%;border-collapse:collapse;font-size:13px}
@@ -79,9 +84,22 @@ tbody tr.hl{background:rgba(239,121,70,.06)}
 tbody td{padding:10px 16px;font-weight:400}
 .qbadge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;font-size:10px;font-weight:600;letter-spacing:.04em}
 .qdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.legend{display:flex;gap:16px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--border);background:var(--surface)}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:14px 20px;border-top:1px solid var(--border);background:var(--surface)}
+.legend-title{font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.legend-divider{width:1px;height:14px;background:var(--border-bright);display:inline-block}
 .li{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);font-weight:500}
 .ld{width:8px;height:8px;flex-shrink:0}
+
+/* Satellite parameters block (below legend) */
+.satparams{background:var(--card);padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;font-size:12px;color:var(--muted);font-weight:500}
+.satp-lead{font-size:13px;font-weight:700;color:var(--text);display:inline-flex;align-items:center;gap:6px;letter-spacing:-.01em}
+.satp-divider{width:1px;height:14px;background:var(--border-bright);display:inline-block}
+.satp-item{white-space:nowrap}
+.satp-info{display:inline-flex;align-items:center;justify-content:center;color:var(--muted);cursor:help;position:relative;transition:color .15s}
+.satp-info:hover,.satp-info:focus{color:var(--accent);outline:none}
+.satp-tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1B1B1B;color:#fff;padding:10px 14px;font-size:11px;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;width:280px;opacity:0;pointer-events:none;transition:opacity .15s ease;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.satp-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1B1B1B}
+.satp-info:hover .satp-tip,.satp-info:focus .satp-tip{opacity:1}
 
 /* Info cards — hidden, reserved for future use */
 .igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
@@ -96,23 +114,25 @@ tbody td{padding:10px 16px;font-weight:400}
 </head>
 <body>
 <div class="wrap">
+  <div class="stack">
 
-  <div class="hero">
-    <h1>Link Quality<br><em>Calculator</em></h1>
-    <p>Select a waveform and device pair to compute estimated link margin, signal quality, and directionality for your mission profile.</p>
+  <div class="config-row config-row-top">
+    <div class="panel panel-wf">
+      <div class="plabel">Waveform</div>
+      <div class="wf-row">
+        <div class="field wf-field">
+          <label>Select Waveform</label>
+          <select id="waveform"></select>
+        </div>
+        <div class="chips wf-chips" id="wfInfo"></div>
+      </div>
+    </div>
   </div>
 
   <div class="config-row">
     <div class="panel">
-      <div class="plabel">Waveform</div>
-      <div class="field">
-        <label>Select Waveform</label>
-        <select id="waveform"></select>
-      </div>
-      <div class="chips" id="wfInfo"></div>
-    </div>
-    <div class="panel">
       <div class="plabel">User A — Node Alpha</div>
+      <div class="dimg" id="imgA"></div>
       <div class="field">
         <label>Device Model</label>
         <select id="userA"></select>
@@ -121,42 +141,41 @@ tbody td{padding:10px 16px;font-weight:400}
     </div>
     <div class="panel">
       <div class="plabel">User B — Node Beta</div>
+      <div class="dimg" id="imgB"></div>
       <div class="field">
         <label>Device Model</label>
         <select id="userB"></select>
       </div>
       <div class="chips" id="infoB"></div>
     </div>
-  </div>
-
-  <div class="rpanel" id="rp">
-    <div class="rempty" id="re">
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="18" stroke="#C8C0B5" stroke-width="1.5"/>
-        <path d="M12 20h16M20 12v16" stroke="#C8C0B5" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      Select a waveform and both device models to compute link quality
-    </div>
-    <div class="rgrid" id="rg">
-      <div class="sblock">
-        <div class="mlabel">Signal Quality</div>
-        <div class="srow">
-          <div class="sqname" id="sqn">—</div>
-          <div style="font-size:24px;font-weight:700" id="sm">—</div>
+    <div class="panel panel-sq" id="rp">
+      <div class="plabel">Signal Quality</div>
+      <div class="sq-inner">
+        <div class="rempty" id="re">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="18" stroke="#C8C0B5" stroke-width="1.5"/>
+            <path d="M12 20h16M20 12v16" stroke="#C8C0B5" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Select a waveform and both device models
         </div>
-        <div class="sbar"><div class="sfill" id="sf"></div></div>
-        <div class="ssegs"><span>No Link</span><span>Weak</span><span>Moderate</span><span>Good</span><span>Very Good</span><span>Excellent</span><span>Superior</span></div>
-      </div>
-      <div class="lboxes" style="align-self:center">
-        <div class="lbox">
-          <div class="lbox-lbl">A → B</div>
-          <div class="lbox-val" id="lab">—</div>
-          <div style="font-size:9px;color:var(--dim);margin-top:4px">dB margin</div>
-        </div>
-        <div class="lbox">
-          <div class="lbox-lbl">B → A</div>
-          <div class="lbox-val" id="lba">—</div>
-          <div style="font-size:9px;color:var(--dim);margin-top:4px">dB margin</div>
+        <div class="sq-result" id="rg">
+          <div class="srow">
+            <div class="sqname" id="sqn">—</div>
+            <div class="sval" id="sm">—</div>
+          </div>
+          <div class="sbar" id="sbar"></div>
+          <div class="lboxes">
+            <div class="lbox">
+              <div class="lbox-lbl">A → B</div>
+              <div class="lbox-val" id="lab">—</div>
+              <div style="font-size:9px;color:var(--dim);margin-top:4px">dB margin</div>
+            </div>
+            <div class="lbox">
+              <div class="lbox-lbl">B → A</div>
+              <div class="lbox-val" id="lba">—</div>
+              <div style="font-size:9px;color:var(--dim);margin-top:4px">dB margin</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -166,11 +185,11 @@ tbody td{padding:10px 16px;font-weight:400}
     <div class="fth" onclick="toggleTable()" style="cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between">
       <div class="ftitle" id="ftt">All Combinations</div>
       <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--muted)">
-        <span id="ftToggleLabel">Show</span>
-        <svg id="ftChevron" width="12" height="8" viewBox="0 0 12 8" fill="none" style="transition:transform .2s"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span id="ftToggleLabel">Hide</span>
+        <svg id="ftChevron" width="12" height="8" viewBox="0 0 12 8" fill="none" style="transition:transform .2s;transform:rotate(180deg)"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
     </div>
-    <div id="ftBody" style="display:none">
+    <div id="ftBody">
       <div style="overflow-x:auto">
         <table>
           <thead><tr><th>User A</th><th>Ant A</th><th>User B</th><th>Ant B</th><th>A→B (dB)</th><th>B→A (dB)</th><th>Avg (dB)</th><th>Quality</th></tr></thead>
@@ -178,42 +197,47 @@ tbody td{padding:10px 16px;font-weight:400}
         </table>
       </div>
       <div class="legend">
-        <div class="li"><div class="ld" style="background:#BF49FF"></div>Superior (22–32 dB)</div>
-        <div class="li"><div class="ld" style="background:#1771FB"></div>Excellent (10–22 dB)</div>
-        <div class="li"><div class="ld" style="background:#43A579"></div>Very Good (7–10 dB)</div>
-        <div class="li"><div class="ld" style="background:#42C500"></div>Good (5–7 dB)</div>
-        <div class="li"><div class="ld" style="background:#EF7946"></div>Moderate (3–5 dB)</div>
-        <div class="li"><div class="ld" style="background:#AD0E00"></div>Weak (1–3 dB)</div>
-        <div class="li"><div class="ld" style="background:#640000"></div>No Link (&lt;1 dB)</div>
+        <span class="legend-title">Legend</span>
+        <span class="legend-divider"></span>
+        <span class="li"><span class="ld" style="background:#BF49FF"></span>Superior (22–32 dB)</span>
+        <span class="li"><span class="ld" style="background:#1771FB"></span>Excellent (10–22 dB)</span>
+        <span class="li"><span class="ld" style="background:#43A579"></span>Very Good (7–10 dB)</span>
+        <span class="li"><span class="ld" style="background:#42C500"></span>Good (5–7 dB)</span>
+        <span class="li"><span class="ld" style="background:#EF7946"></span>Moderate (3–5 dB)</span>
+        <span class="li"><span class="ld" style="background:#AD0E00"></span>Weak (1–3 dB)</span>
+        <span class="li"><span class="ld" style="background:#640000"></span>No Link (&lt;1 dB)</span>
       </div>
     </div>
   </div>
 
-  <!-- Info cards — hidden, reserved for future use -->
-  <div class="igrid" style="display:none">
-    <div class="icard">
-      <div class="ictitle">Satellite Parameters</div>
-      <div class="irow"><span class="ik">Satellite</span><span class="iv">AF1 (Alphasat)</span></div>
-      <div class="irow"><span class="ik">Tx Frequency</span><span class="iv">1650 MHz</span></div>
-      <div class="irow"><span class="ik">Rx Frequency</span><span class="iv">1550 MHz</span></div>
-      <div class="irow"><span class="ik">Pointing Error</span><span class="iv">2 dB</span></div>
-      <div class="irow"><span class="ik">Off-Beam Loss</span><span class="iv">2 dB</span></div>
-    </div>
-    <div class="icard" id="wtc"></div>
-    <div class="icard" id="msc"></div>
+  <div class="satparams">
+    <span class="satp-lead">
+      Satellite: AF1 (Alphasat)
+      <span class="satp-info" tabindex="0" aria-label="About these values">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><circle cx="7" cy="4" r=".9" fill="currentColor"/><path d="M7 6.5v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <span class="satp-tip">These values are baked into every margin shown above. Real-world performance varies with weather, antenna pointing accuracy, and position within the satellite beam.</span>
+      </span>
+    </span>
+    <span class="satp-divider"></span>
+    <span class="satp-item">Tx Frequency (1650 MHz)</span>
+    <span class="satp-item">Rx Frequency (1550 MHz)</span>
+    <span class="satp-item">Pointing Error (2 dB)</span>
+    <span class="satp-item">Off-Beam Loss (2 dB)</span>
   </div>
 
+  </div>
 </div>
 <script>
+// Device specs — replace `img` URLs with your own product images (square works best, e.g. 400x400)
 const FLIPPER_MODELS = {
-  'HTS-100': {ant:'Omni [gooseneck]', gain:0, pwr:3.5},
-  'VTS-300': {ant:'Omni [mounted]',   gain:1, pwr:3.5},
-  'VTS-301': {ant:'Directional',      gain:8, pwr:2  }
+  'HTS-100': {ant:'Omni [gooseneck]', gain:0, pwr:3.5, img:'https://github.com/matanbe/commcrete-calculator/blob/main/HTS100.jpg?raw=true'},
+  'VTS-300': {ant:'Omni [mounted]',   gain:1, pwr:3.5, img:'https://github.com/matanbe/commcrete-calculator/blob/main/VTS300.jpg?raw=true'},
+  'VTS-301': {ant:'Directional',      gain:8, pwr:2  , img:'https://github.com/matanbe/commcrete-calculator/blob/main/VTS301.jpg?raw=true'}
 };
 const SD_MODELS = {
-  'SD-100': {ant:'Omni [gooseneck]', gain:0, pwr:null},
-  'SD-200': {ant:'Omni [mounted]',   gain:1, pwr:null},
-  'SD-301': {ant:'Directional',      gain:8, pwr:null}
+  'SD-100': {ant:'Omni [gooseneck]', gain:0, pwr:null, img:'https://github.com/matanbe/commcrete-calculator/blob/main/SD100.jpg?raw=true'},
+  'SD-200': {ant:'Omni [mounted]',   gain:1, pwr:null, img:'https://github.com/matanbe/commcrete-calculator/blob/main/SD200.jpg?raw=true'},
+  'SD-301': {ant:'Directional',      gain:8, pwr:null, img:'https://github.com/matanbe/commcrete-calculator/blob/main/SD301.jpg?raw=true'}
 };
 
 const WAVEFORMS = [
@@ -233,13 +257,23 @@ const WAVEFORMS = [
 ];
 
 const Q=[
-  {n:'Superior',  min:22,  fill:100, c:'#BF49FF'},
-  {n:'Excellent', min:10,  fill:80,  c:'#1771FB'},
-  {n:'Very Good', min:7,   fill:65,  c:'#43A579'},
-  {n:'Good',      min:5,   fill:50,  c:'#42C500'},
-  {n:'Moderate',  min:3,   fill:38,  c:'#EF7946'},
-  {n:'Weak',      min:1,   fill:25,  c:'#AD0E00'},
-  {n:'No Link',   min:-99, fill:8,   c:'#640000'},
+  {n:'Superior',  min:22,  tierIdx:6, c:'#BF49FF'},
+  {n:'Excellent', min:10,  tierIdx:5, c:'#1771FB'},
+  {n:'Very Good', min:7,   tierIdx:4, c:'#43A579'},
+  {n:'Good',      min:5,   tierIdx:3, c:'#42C500'},
+  {n:'Moderate',  min:3,   tierIdx:2, c:'#EF7946'},
+  {n:'Weak',      min:1,   tierIdx:1, c:'#AD0E00'},
+  {n:'No Link',   min:-99, tierIdx:0, c:'#640000'},
+];
+// Left-to-right tier order for the segment bar (worst → best)
+const TIERS = [
+  {n:'No Link',   c:'#640000'},
+  {n:'Weak',      c:'#AD0E00'},
+  {n:'Moderate',  c:'#EF7946'},
+  {n:'Good',      c:'#42C500'},
+  {n:'Very Good', c:'#43A579'},
+  {n:'Excellent', c:'#1771FB'},
+  {n:'Superior',  c:'#BF49FF'},
 ];
 const gq = v => { for(const q of Q) if(v >= q.min) return q; return Q[Q.length-1]; };
 
@@ -274,6 +308,13 @@ function updInfo() {
     document.getElementById('info'+u).innerHTML = s
       ? `<div class="chip">Antenna: <span>${s.ant}</span></div><div class="chip">Gain: <span>${s.gain} dBi</span></div>${s.pwr?`<div class="chip">Power: <span>${s.pwr}W</span></div>`:''}`
       : '';
+    const imgBox = document.getElementById('img'+u);
+    if (s && s.img) {
+      imgBox.classList.add('loading');
+      imgBox.innerHTML = `<img alt="${m}" src="${s.img}" onload="this.parentElement.classList.remove('loading')" onerror="this.style.display='none';this.parentElement.classList.remove('loading')">`;
+    } else {
+      imgBox.innerHTML = '';
+    }
   });
 }
 
@@ -310,8 +351,10 @@ function calc() {
   document.getElementById('sqn').style.color = q.c;
   document.getElementById('sm').textContent = avg.toFixed(2) + ' dB';
   document.getElementById('sm').style.color = q.c;
-  document.getElementById('sf').style.width = q.fill+'%';
-  document.getElementById('sf').style.background = `linear-gradient(90deg,${q.c}88,${q.c})`;
+  document.getElementById('sbar').innerHTML = TIERS.map((t,i) => {
+    const lit = i <= q.tierIdx;
+    return `<div class="sseg"${lit ? ` style="background:${q.c};border-color:${q.c}"` : ''}></div>`;
+  }).join('');
   document.getElementById('lab').textContent = ab.toFixed(2);
   document.getElementById('lab').style.color = gq(ab).c;
   document.getElementById('lba').textContent = ba.toFixed(2);
